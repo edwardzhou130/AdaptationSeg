@@ -85,19 +85,19 @@ class image_label_segment_generator(object):
         return (loaded_im,loaded_label)
 
 synthia_im_path='./data/Image/SYNTHIA/train/'
-synthia_im_file_list = [y for x in walk(synthia_im_path) for y in glob(join(x[0], '*.png'))]
+synthia_im_file_list = [y for x in walk(synthia_im_path,followlinks=True) for y in glob(join(x[0], '*.png'))]
 val_synthia_im_list=synthia_im_file_list[::30]
 train_synthia_im_list=synthia_im_file_list
 del train_synthia_im_list[::30]
 train_synthia_generator=image_label_segment_generator(train_synthia_im_list,'./data/segmentation_annotation/SYNTHIA/GT/parsed_LABELS/')
 
 cityscape_val_im_path='./data/Image/CityScape/train/'
-cityscape_val_im_list = [y for x in walk(cityscape_val_im_path) for y in glob(join(x[0], '*.png'))]
+cityscape_val_im_list = [y for x in walk(cityscape_val_im_path,followlinks=True) for y in glob(join(x[0], '*.png'))]
 cityscape_val_im_list=cityscape_val_im_list[::5]
 val_synthia_generator=image_label_segment_generator(cityscape_val_im_list,'./data/segmentation_annotation/Parsed_CityScape/train/')
 
 cityscape_test_im_path='./data/Image/CityScape/val/'
-cityscape_test_im_list = [y for x in walk(cityscape_test_im_path) for y in glob(join(x[0], '*.png'))]
+cityscape_test_im_list = [y for x in walk(cityscape_test_im_path,followlinks=True) for y in glob(join(x[0], '*.png'))]
 test_cityscape_generator=image_label_segment_generator(cityscape_test_im_list,'./data/segmentation_annotation/Parsed_CityScape/val/')
 
 class image_layout_segment_generator(object):
@@ -128,7 +128,7 @@ cityscape_SP_annot_path='./data/SP_landmark/Parsed_CityScape/'
 cityscape_mat_path='./data/label_distribution/Parsed_CityScape_inception/'
 
 
-cityscape_im_list = [y for x in walk(cityscape_im_path) for y in glob(join(x[0], '*.png'))]
+cityscape_im_list = [y for x in walk(cityscape_im_path,followlinks=True) for y in glob(join(x[0], '*.png'))]
 aux_data_list=[x.split('/')[-3]+'/'+x.split('/')[-1] for x in cityscape_im_list]
 cityscape_SP_map_list = [cityscape_SP_map_path+x[0:-4]+'.png' for x in aux_data_list]
 cityscape_SP_annot_list = [cityscape_SP_annot_path+x[0:-4]+'.png' for x in aux_data_list]
