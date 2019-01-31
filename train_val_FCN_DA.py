@@ -146,11 +146,7 @@ def myGenerator():
             loaded_source_im=loaded_source_im.astype('float32')-image_mean
             loaded_source_label=binarize_label(loaded_source_label).astype('float32')
             
-<<<<<<< HEAD
             while True:# There are some empty annotation in the dataset. They result in NaN
-=======
-            while True:#There are some empty annotation in the dataset. They result in NaN
->>>>>>> 007602223b5a1733ffd6e86b3a4d78fcd50bd331
                 tar_idx=sample(range(len(cityscape_im_generator)),target_batch_size)
                 loaded_target_im,loaded_SP_map,loaded_SP_annotation,loaded_target_obj_pre=cityscape_im_generator[tar_idx]
                 reload_flag=False
@@ -159,10 +155,6 @@ def myGenerator():
                         reload_flag=True
                 if not reload_flag:
                     break
-<<<<<<< HEAD
-=======
-             
->>>>>>> 007602223b5a1733ffd6e86b3a4d78fcd50bd331
             loaded_target_im=loaded_target_im.astype('float32')-image_mean
             
             loaded_SP_annotation=binarize_label(loaded_SP_annotation).astype('float32')
